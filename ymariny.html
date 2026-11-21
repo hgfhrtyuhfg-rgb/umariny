@@ -1,0 +1,410 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">   
+<style>
+body {
+    background-color: #b98a63; 
+    color: #fdfdfd;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+}
+.container {
+    max-width: 800px;
+    margin: 0 ;
+    padding: 20px;
+    text-align: center; 
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 30px auto; 
+    box-shadow: 0 0 20px rgba(255, 254, 255, 0.4); 
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    border: 1px solid #ffae00; 
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #000007; 
+    font-size: 18px;
+    box-shadow: 0 0 10px rgba(250, 249, 250, 0.2); 
+    transition: 0.3s; 
+}
+ul li:hover {
+    box-shadow: 0 0 20px rgba(250, 249, 250, 0.6); 
+    transform: scale(1.02); 
+}
+.header {
+    background: linear-gradient(to bottom, #3e2723, #ffb74d);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 4px solid #fdfdfd;
+}
+.header h2 {
+    margin: 0;
+    font-size: 36px;
+    color: #ffffff;
+    text-shadow: 0 0 15px #fcffff;
+    font-family: 'Cinzel Decorative';
+}
+.header p {
+    color: #e0e0e0;
+    margin-top: 10px;
+    font-size: 18px;
+}
+button {
+    color: #ffffff;
+    background-color: transparent; 
+    border-radius: 10px;
+    width: 100%; 
+    max-width: 300px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #ffae00; 
+    cursor: pointer;
+    transition: all 0.3s; 
+    box-shadow: 0 0 10px rgba(236, 160, 74, 0.3); 
+}
+button:hover {
+    background-color: #ffffff; 
+    color: #000000; 
+    box-shadow: 0 0 20px rgba(243, 195, 39, 0.8); 
+}
+
+
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: -500px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+.buttons-row button {
+    margin: 0;
+    width: auto;
+    min-width: 200px;
+    flex: 1 1 200px;
+    max-width: 260px;
+}
+
+@media (max-width: 600px) {
+    .header h2 { font-size: 28px; }
+    ul li { font-size: 16px; }
+    .buttons-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .buttons-row button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); 
+    overflow-y: auto;
+    padding: 20px 0;
+}
+.modal-content {
+    background-color: #121218; 
+    margin: 5% auto; 
+    padding: 20px;
+    border: 2px solid #fdfcfd; 
+    border-radius: 15px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); 
+}
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close:hover {
+    color: #000000; 
+    text-shadow: 0 0 10px #c2b57a;
+}
+.modal-content input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #f3eff3; 
+    background-color: #050505; 
+    color: #fff;
+    font-size: 16px;
+}
+.modal-content input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #f7f6f7; 
+}
+
+.about-section {
+    display: flex;             
+    align-items: center;       
+    gap: 40px;                 
+    max-width: 1000px;
+    margin: 40px ;         
+    padding: 20px;
+    background-color: #fab276; 
+    border-radius: 20px;       
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    justify-content: flex-start;
+}
+
+.image-content {
+    flex: 1;                   
+}
+
+.image-content img {
+    width: 100%;               
+    height: auto;
+    border-radius: 15px;       
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
+    object-fit: cover;         
+}
+
+.text-content {
+    flex: 1;                   
+    text-align: left;          
+    color: #333;               
+}
+
+.text-content h2 {
+    margin-top: 0;
+    color: #8B4513;            
+    font-size: 28px;
+}
+
+.text-content p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .about-section {
+        flex-direction: column; 
+    }
+    .map-content iframe {
+        height: 300px; 
+    }
+}
+
+.map-content {margin: -500px 1110px 535px;}
+
+</style>
+</head>
+<body>
+
+<header class="header">
+    <h2>КАФЕ "У МАРИНЫ"</h2>
+    <p>НАБЕЙ ЖИВОТ У НАС</p>
+</header>
+
+<div class="about-section">
+    <div class="image-content">
+        <img src="У марины фото.jpg" alt="Кафе У Марины">
+    </div>
+    <div class="text-content">
+        <h2>О нашем кафе</h2>
+        <p>Домашняя кухня и быстрый фастфуд. Устал от непонятных блюд? Тебе к нам!</p>
+        <p><strong>Всегда свежая, горячая выпечка!</strong></p>
+        <p><strong>Домашние пельмени и тесто любой сложности</strong></p>
+    </div>
+</div>
+
+<div class="map-content">
+    
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2078.010969272347!2d125.39481686196247!3d58.6121599870838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5c108748205dc727%3A0x61918b0457c40e8d!2z0J_QtdGA0LLQvtC80LDQudGB0LrQuNC5INC_0LXRgC4sIDEsINCQ0LvQtNCw0L0sINCg0LXRgdC_LiDQodCw0YXQsCAo0K_QutGD0YLQuNGPKSwgNjc4OTAw!5e0!3m2!1sru!2sru!4v1795083000486!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+
+<div class="buttons-row">
+    <button onclick="openMenuModal()">Готовая еда</button>
+    <button onclick="openDrinksModal()">Горячие напитки</button>
+    <button onclick="openOrderFood()">Заказ еды</button>
+</div>
+
+<div id="MenuModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeMenuModal()">&times;</span>
+        <ul>
+            <p>Гарниры</p>
+            <li><strong>Рис отварной 250гр: 70₽</strong></li>
+            <li><strong>Картофель жареный 400гр: 250₽</strong></li>
+            <li><strong>Макароны 250гр: 75₽</strong></li>
+            <li><strong>Пюре картофельное 250гр: 90₽</strong></li>
+            <p>Выпичка</p>
+            <li><strong>Пирожек с яйцом и луком: 80₽</strong></li>
+            <li><strong>Пирожек с капустой: 80₽</strong></li>
+            <li><strong>Пирожек с картошкой: 80₽</strong></li>
+            <li><strong>Беляш с мясом: 150₽</strong></li>
+            <li><strong>Чебурек: 150₽</strong></li>
+            <li><strong>Пирожек с брусникой: 95₽</strong></li>
+            <li><strong>Сдоба выборгаская: 60₽</strong></li>
+            <li><strong>Рулет с маком: 85₽</strong></li>
+            <li><strong>Синнабон: 150₽</strong></li>
+            <li><strong>Гамбургер: 150₽</strong></li>
+            <li><strong>Хот-дог 2 сосиски: 200₽</strong></li>
+            <li><strong>Шаурма классик: 320₽</strong></li>
+            <li><strong>Шаурма по деревенски: 320₽</strong></li>
+            <li><strong>Шаурма с сыром: 320₽</strong></li>
+            <li><strong>Сэндвич(ветчина колбаса): 200₽</strong></li>
+            <p>Салаты</p>
+            <li><strong>Фунчоза 150гр: 200₽</strong></li>
+            <li><strong>Морковь по корейски 150гр: 200₽</strong></li>
+            <li><strong>Студенческий 150гр: 160₽</strong></li>
+            <li><strong>Крабовый 150гр: 200₽</strong></li>
+            <li><strong>Селедка под шубой 150гр: 200₽</strong></li>
+            <p1>Первые блюда </p1>
+            <li><strong>Борщ с капустой 400гр: 300₽</strong></li>
+            <li><strong>Рассольник 400гр: 250₽</strong></li>
+            <li><strong>Пельмени с б/без (17штук): 300₽</strong></li>
+            <p>Вторые блюда</p>
+            <li><strong>Котлета домашняя 130гр: 220₽</strong></li>
+            <li><strong>Котлета куринная  130гр: 220₽</strong></li>
+            <li><strong>Котлета по киевски 300гр: 300₽</strong></li>
+            <li><strong>Плов 400гр: 300₽</strong></li>
+            <li><strong>Жаркое 400гр: 300₽</strong></li>
+            <li><strong>Бигус(капуста с мясом) 400гр: 300₽</strong></li>
+            <li><strong>Отбивная куриная с ов. 300гр: 350₽</strong></li>
+            <li><strong>Рыба жаренная(минтай) 100гр: 85₽</strong></li>
+            <li><strong>Тефтели 2шт: 200₽</strong></li>
+            <li><strong>Колбаса жаренная 150гр: 200₽</strong></li>
+            <li><strong>Глазунья с колбосой: 250₽</strong></li>
+            <li><strong>Глазунья из 3x яиц: 150₽</strong></li>
+            <li><strong>Манты (1шт): 80₽</strong></li>
+            <li><strong>Хлеб(1шт): 8₽</strong></li>
+
+        </ul>
+        <button onclick="openBookingModal()">Забронировать стол</button>
+    </div>
+</div>
+
+<div id="DrinksModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeDrinksModal()">&times;</span>
+        <h2>Горячие напитки</h2>
+        <ul>
+            <li><strong>Чай с лимоном: 50₽</strong></li>
+            <li><strong>Чай с молоком: 50₽</strong></li>
+            <li><strong>Кофе с молоком: 100₽</strong></li>
+            <li><strong>Кофе с лимоном: 100₽</strong></li>
+            <li><strong>Морс(Брусника): 50₽</strong></li>
+            </ul>
+        <button onclick="openBookingModal()">Забронировать стол</button>
+    </div>
+</div>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeBookingModal()">&times;</span>
+        <h2 id="bookingTitle">Бронирование столика</h2>
+        <p id="bookingText">Введите ваше имя и номер телефона:</p>
+        <input type="text" id="nameInput" placeholder="Ваше имя">
+        <input type="text" id="phoneInput" placeholder="Телефон">
+        <input type="text" id="bronInput" placeholder="Введите кол-во людей">
+        <button onclick="submitOrder()">Отправить</button>
+    </div>
+</div>
+
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSuccessModal()">&times;</span>
+        <h2>Успешно!</h2>
+        <p id="successMessage">Спасибо! Столик забронирован</p>
+        <button onclick="closeSuccessModal()">Отлично</button>
+    </div>
+</div>
+
+<script>
+function openMenuModal() {
+    document.getElementById("MenuModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function closeMenuModal() {
+    document.getElementById("MenuModal").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+function openDrinksModal() {
+    document.getElementById("DrinksModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function closeDrinksModal() {
+    document.getElementById("DrinksModal").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+function openBookingModal(title, text, placeholder) {
+    document.getElementById("bookingTitle").innerText = title || "Бронирование столика";
+    document.getElementById("bookingText").innerText = text || "Введите ваше имя и номер телефона:";
+    document.getElementById("bronInput").placeholder = placeholder || "Введите кол-во людей";
+    document.getElementById("bookingModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function closeBookingModal() {
+    document.getElementById("bookingModal").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+function openOrderFood() {
+    openBookingModal(
+        "Заказ еды",
+        "Введите имя, телефон и что хотите заказать:",
+        "Ваш заказ:"
+    );
+}
+
+function openSuccessModal() {
+    document.getElementById("successModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function closeSuccessModal() {
+    document.getElementById("successModal").style.display = "none";
+    document.body.style.overflow = "";
+}
+
+function submitOrder() {
+    let name = document.getElementById("nameInput").value;
+    let phone = document.getElementById("phoneInput").value;
+    let bron = document.getElementById("bronInput").value; 
+
+    if (name === "" || phone === "" || bron === "") {
+        alert("Пожалуйста, заполните все поля!");
+    } else {
+        closeBookingModal(); 
+        document.getElementById("successMessage").innerText = "Спасибо, " + name + "! Ваша заявка (" + bron + ") принята. Мы позвоним вам на номер " + phone;
+        openSuccessModal();
+    }
+}
+</script>
+</body>
+</html>
